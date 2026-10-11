@@ -84,6 +84,8 @@ Windows 命名预算：仓库相对路径≤140、JSON文件名≤96字符；新
 | `34-semantic-bridge` | Semantic Bridge／BUNNY 普通条件、Relay、内循环及独立双采；640×320→896×448两段8秒4+4配方已验收，其他路线仍按EXP说明 |
 | `36-avatar-voice` | 本地 Avatar 录音驱动4+4、可选TAEH3预览／定向取消、原生Ref2VA普通／情绪对白与双采／长视频接线；人审待、不发布 |
 
+新增入口：[H09／Veda R2VA九张已审来源图](86-h09-reviewed/README.md)：独立R2VA、prepared INT8、人物前缀续接、原声切窗、导演候选、参考路由和文字提案。旧配方保留，各项接受范围见说明。
+
 新增入口：[H07七项已审配方](85-h07-reviewed/README.md)：可选新音频时钟、清唱、有限背景合成、姿态、同Stage X2、动作拟音和专用PDD7+1。旧配方不覆盖。
 
 新增入口：[FreeVideo 新四档 Full／Cold](76-freevideo-quality/README.md)。Light8+3／Medium12指定样片人审通过，16／20仅CPU结构支持；[旧8+2／4+4](72-freevideo-split/README.md)保持。

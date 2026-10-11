@@ -52,6 +52,13 @@ if __package__:
     from .freevideo_quality.audio_nodes import NODES as _freevideo_audio_node_classes
     from .nodes_h07_reports import NODES as _h07_report_node_classes
     from .nodes_h07_delivery import NODES as _h07_delivery_node_classes
+    from .nodes_veda_r2va import NODES as _veda_r2va_node_classes
+    from .nodes_branch_guide import NODES as _branch_guide_node_classes
+    from .nodes_person_removal import NODES as _person_removal_node_classes
+    from .freevideo_int8.nodes import NODES as _freevideo_int8_node_classes
+    from .nodes_source_audio_plan import NODES as _source_audio_plan_node_classes
+    from .nodes_refmod_bridge import NODES as _refmod_bridge_node_classes
+    from .nodes_prompt_provider import NODES as _prompt_provider_node_classes
 else:  # Allows direct test collection from a hyphenated custom-node directory.
     import importlib.util
     import sys
@@ -144,6 +151,13 @@ else:  # Allows direct test collection from a hyphenated custom-node directory.
     _freevideo_audio_node_classes = import_module(f"{_package_name}.freevideo_quality.audio_nodes").NODES
     _h07_report_node_classes = import_module(f"{_package_name}.nodes_h07_reports").NODES
     _h07_delivery_node_classes = import_module(f"{_package_name}.nodes_h07_delivery").NODES
+    _veda_r2va_node_classes = import_module(f"{_package_name}.nodes_veda_r2va").NODES
+    _branch_guide_node_classes = import_module(f"{_package_name}.nodes_branch_guide").NODES
+    _person_removal_node_classes = import_module(f"{_package_name}.nodes_person_removal").NODES
+    _freevideo_int8_node_classes = import_module(f"{_package_name}.freevideo_int8.nodes").NODES
+    _source_audio_plan_node_classes = import_module(f"{_package_name}.nodes_source_audio_plan").NODES
+    _refmod_bridge_node_classes = import_module(f"{_package_name}.nodes_refmod_bridge").NODES
+    _prompt_provider_node_classes = import_module(f"{_package_name}.nodes_prompt_provider").NODES
 
 
 class _HyperFlowLongVideoExtension(_BaseExtension):
@@ -171,7 +185,10 @@ class _ModularSamplingExtension(_HyperFlowLongVideoExtension):
                 *_freevideo_decoder_node_classes, *_res_history_node_classes, *_res_stage_node_classes,
                 *_res_effects_node_classes, *_lanpaint_clock_node_classes, *_external_image_node_classes,
                 *_dense_transfer_node_classes, *_external_av_node_classes, *_visual_marker_node_classes,
-                *_freevideo_audio_node_classes, *_h07_report_node_classes, *_h07_delivery_node_classes]
+                *_freevideo_audio_node_classes, *_h07_report_node_classes, *_h07_delivery_node_classes,
+                *_veda_r2va_node_classes, *_branch_guide_node_classes, *_person_removal_node_classes,
+                *_freevideo_int8_node_classes, *_source_audio_plan_node_classes, *_refmod_bridge_node_classes,
+                *_prompt_provider_node_classes]
 
 
 def comfy_entrypoint():

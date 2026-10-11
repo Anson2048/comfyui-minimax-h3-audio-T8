@@ -2,7 +2,17 @@
 
 [首页](README.md) · [English](README_EN.md)
 
-## 当前版本：1.97.0
+## 当前版本：1.98.0
+
+### H09／Veda R2VA 已审配方（EXP）
+
+- 七项具体人审通过，保存9张短名来源图；旧697接口、默认和顺序保持，追加23节点至720。
+- 独立Veda R2VA、prepared FreeVideo INT8四档与Light8+3、Person Remover分离窗口、原声PCM规划、显式参考Join、可选FreeToken提案及导演台候选复用。
+- 旧T2VA／FP8／8+2／4+4、分离双采、外置EAV／Relay和旧工作流不替换；默认不采用提案。
+- 人物图需四份匹配原生前缀；文本／路由接受不是生成质量、多人声纹或提速证明。Frozen Cache仍条件研究未实现。
+- [1.98.0说明](docs/RELEASE_1.98.0.md) · [9张工作流](examples/workflows/86-h09-reviewed/README.md)。
+
+## 1.97.0
 
 ### H07 已审配方与独立诊断（EXP）
 

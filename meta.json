@@ -830,7 +830,7 @@
     ]
   },
   "name": "minimax-h3-audio-T8",
-  "version": "1.97.0",
+  "version": "1.98.0",
   "release_1_79_0": {
     "scope": "Dual-MODEL4+learned-upscale+4, KJ/Sol integration, official regular Topaz upscaling, R1 reliability, VDN upstream override coexistence",
     "qualification": "Reviewed two-segment8s prefix-lock sample accepted; old workflow defaults preserved.177 targetedCPU and62 VDN/Core checks passed; no GPU rerun for override gate removal.",
@@ -1139,5 +1139,238 @@
       "MiniMaxH3FreeVideoQualityEAVEXPT8",
       "MiniMaxH3FreeVideoQualityPromptRelayEXPT8"
     ]
+  },
+  "veda_r2va_exp_local": {
+    "status": "native_Dense_Sparse_5s_canvas_case_human_accepted_not_speed_certification",
+    "reviewed_templates": [
+      "examples/workflows/86-h09-reviewed/A1_Veda_Dense.json",
+      "examples/workflows/86-h09-reviewed/A1_Veda_Sparse.json"
+    ],
+    "resource_adaptations_reexecuted": false,
+    "nodes": [
+      "MiniMaxH3VedaR2VABundleEXPT8",
+      "MiniMaxH3VedaR2VAApplyEXPT8",
+      "MiniMaxH3VedaR2VAAuditEXPT8"
+    ],
+    "model_directory": "models/veda_r2va",
+    "upstream_commit": "8d7ac153ac215d636eaf1b5910b0536c3de9e6ed",
+    "predictor_revision": "1598b407905b7c0af85aa0c13acdfa6f01ff2982",
+    "predictor_sha256": "23edace948693772be33d5cc945d302d2b037a29bd44bd57071bfbdd8b02517d",
+    "predictor_bytes": 275415752,
+    "trained_budgets": {
+      "reference_key_tiles": 32,
+      "generated_key_tiles": 32
+    },
+    "execution": "official_R2VA_predictor_selection_with_T8_PyTorch_Flex_NOT_upstream_INT8",
+    "identity_scope": "R2VA_execution_local_content_NOT_portable_Stage_NOT_legacy_T2VA",
+    "old_nodes_workflows_and_defaults_unchanged": true,
+    "native_sampler_runs": 2,
+    "native_dimensions": [
+      864,
+      480
+    ],
+    "native_delivered_frames": 120,
+    "actual_dense_delegated_calls": 400,
+    "actual_sparse_calls": 400,
+    "actual_unverified_sparse_calls": 0,
+    "actual_sparse_delegate_calls": 0,
+    "human_quality_accepted": true,
+    "human_review_case": "A1",
+    "human_review_revision": 15,
+    "human_acceptance_receipt": "artifacts/development/h09-20261010/human-review-b23-v1/audit.json",
+    "speed_verified": false,
+    "published": true,
+    "documentation": "docs/VEDA_R2VA_EXP.md",
+    "github_release_version": "1.98.0"
+  },
+  "h09_person_removal_exp_local": {
+    "status": "actual_UI_corrected_external_mask_full120_case_human_accepted_old_failures_retained",
+    "reviewed_template": "examples/workflows/86-h09-reviewed/A4_Person_Prefix_Resume.json",
+    "reviewed_template_requires_existing_native_prefix": true,
+    "resource_adaptations_reexecuted": false,
+    "nodes": [
+      "MiniMaxH3PersonMaskEXPT8",
+      "MiniMaxH3PersonPlanEXPT8",
+      "MiniMaxH3PersonWindowEXPT8",
+      "MiniMaxH3PersonConditioningEXPT8",
+      "MiniMaxH3PersonAppendEXPT8"
+    ],
+    "model": "akatz-ai/MiniMax-H3-Person-Remover-LoRA",
+    "model_revision": "bbc23bf8d6ef833aef43afc0ae740b7cf937d763",
+    "model_sha256": "b01dc9fe888c2f4e455a8eb3b4878dfd4038ee0e2320a7b186c7935e65c93ba5",
+    "model_bytes": 155110584,
+    "window_frames": 22,
+    "history_frames": 18,
+    "steps_per_window": 12,
+    "global_core_patched": false,
+    "old_nodes_workflows_defaults_unchanged": true,
+    "native_sampler_runs": 19,
+    "native_sampler_runs_unit": "completed non-cached SamplerCustomAdvanced windows, not DiT calls",
+    "completed_canvas_jobs": 6,
+    "completed_full_five_second_media": 4,
+    "completed_native_prefix_single_window_rerolls": 1,
+    "rerolled_W2_agent_observed_clear": true,
+    "rerolled_full_suffix_verified": true,
+    "rerolled_full_suffix_scope": "actual full120 AV integrity and case-specific human acceptance, not universal removal or pixel lock",
+    "full120_agent_observed_clear_candidate": true,
+    "retained_failed_full_five_second_media": 3,
+    "human_quality_accepted": true,
+    "human_review_case": "A4",
+    "human_review_revision": 15,
+    "human_acceptance_receipt": "artifacts/development/h09-20261010/human-review-b23-v1/audit.json",
+    "published": true,
+    "documentation": "docs/H09_PERSON_REMOVAL_EXP.md",
+    "github_release_version": "1.98.0"
+  },
+  "h09_freevideo_int8_exp_local": {
+    "status": "actual_UI_Light_8plus3_full5s_human_accepted_not_all_tasks_or_speed_certification",
+    "reviewed_templates": [
+      "examples/workflows/86-h09-reviewed/A2_FreeVideo_FP8_8plus3.json",
+      "examples/workflows/86-h09-reviewed/A2_FreeVideo_INT8_8plus3.json"
+    ],
+    "resource_adaptations_reexecuted": false,
+    "nodes": [
+      "MiniMaxH3FreeVideoINT8LoaderEXPT8",
+      "MiniMaxH3FreeVideoINT8SamplerEXPT8",
+      "MiniMaxH3FreeVideoINT8HIGH3EXPT8",
+      "MiniMaxH3FreeVideoINT8StageSaveEXPT8",
+      "MiniMaxH3FreeVideoINT8StageLoadEXPT8",
+      "MiniMaxH3FreeVideoINT8LoRAEXPT8",
+      "MiniMaxH3FreeVideoINT8EAVEXPT8",
+      "MiniMaxH3FreeVideoINT8PromptRelayEXPT8"
+    ],
+    "source_revision": "ebc94ecdeec3cbfe74040fe69a5116a62bf01dcd",
+    "model_revision": "da37681f5a1f7015fdb63482142b865111b687d3",
+    "runtime_schema": "t8-freevideo-runtime-int8-v1",
+    "precision": "int8_rowwise_convrot_group256",
+    "reference_audio_t": 1,
+    "bounded_kernel_probes": [
+      "linear-int8",
+      "cudnn",
+      "cudnn-additive-bias-128-plus-3"
+    ],
+    "prepared_tasks": [
+      "t2va",
+      "i2va",
+      "l2va",
+      "fl2va",
+      "ref2va",
+      "ref2va_audio",
+      "ref2va_av"
+    ],
+    "prepared_distinct_tables": 20,
+    "prepared_inventory_entries": 2589,
+    "native_sampler_runs": 0,
+    "execution": "isolated_official_engine_NOT_Core_DiT_sampler",
+    "completed_canvas_jobs": 1,
+    "completed_engine_stages": 2,
+    "native_delivered_dimensions": [
+      1024,
+      576
+    ],
+    "native_delivered_frames": 120,
+    "LOW_audio_preserved_exact": true,
+    "human_quality_accepted": true,
+    "human_review_case": "A2",
+    "human_review_revision": 15,
+    "human_acceptance_receipt": "artifacts/development/h09-20261010/human-review-b23-v1/audit.json",
+    "speed_verified": false,
+    "old_nodes_workflows_defaults_unchanged": true,
+    "published": true,
+    "documentation": "docs/H09_FREEVIDEO_INT8_EXP.md",
+    "github_release_version": "1.98.0"
+  },
+  "h09_production_recipes_local": {
+    "status": "actual_Director_UI_three_originals_retained_candidate_flow_human_accepted_unadopted",
+    "documentation": "docs/H09_PRODUCTION_RECIPES.md",
+    "human_candidate_review_accepted": true,
+    "reviewed_template": "examples/workflows/86-h09-reviewed/B1_Director_Candidates.json",
+    "resource_adaptations_reexecuted": false,
+    "human_review_case": "B1",
+    "human_review_revision": 15,
+    "human_acceptance_receipt": "artifacts/development/h09-20261010/human-review-b23-v1/audit.json",
+    "automatic_accept": false,
+    "old_nodes_workflows_defaults_unchanged": true,
+    "published": true,
+    "github_release_version": "1.98.0"
+  },
+  "h09_reference_join_local": {
+    "status": "actual_UI_reference_preview_join_route_conditioning_human_accepted_NOT_generated_identity",
+    "nodes": [
+      "MiniMaxH3ReferenceJoinEXPT8"
+    ],
+    "documentation": "docs/H09_REFERENCE_JOIN.md",
+    "MODEL_hooks_changed": false,
+    "strength_applied": false,
+    "native_sampler_runs": 0,
+    "human_quality_accepted": true,
+    "human_acceptance_scope": "specific_reference_preview_join_route_conditioning_NOT_generated_identity_or_strength",
+    "human_review_case": "B2",
+    "human_review_revision": 3,
+    "human_review_id": "a25f36b7eb0ac6fa988f01e5ff9c20464d1920a322893900c73f2f30dcc18d86",
+    "human_acceptance_receipt": "artifacts/development/h09-20261010/targeted-export-v1/audit.json",
+    "reviewed_template": "examples/workflows/86-h09-reviewed/B2_Reference_Join_Route.json",
+    "resource_adaptations_reexecuted": false,
+    "published": true,
+    "github_release_version": "1.98.0"
+  },
+  "h09_source_audio_plan_local": {
+    "status": "actual_UI_global_PCM_two_2p5s_windows_human_accepted_not_speaker_identity_certification",
+    "reviewed_template": "examples/workflows/86-h09-reviewed/A3_Source_PCM_Windows.json",
+    "resource_adaptations_reexecuted": false,
+    "nodes": [
+      "MiniMaxH3SourceAudioPlanEXPT8",
+      "MiniMaxH3SourceAudioWindowEXPT8"
+    ],
+    "documentation": "docs/H09_SOURCE_AUDIO_PLAN.md",
+    "fps": 24,
+    "tts": false,
+    "resampled": false,
+    "native_sampler_runs": 0,
+    "human_quality_accepted": true,
+    "human_review_case": "A3",
+    "human_review_revision": 15,
+    "human_acceptance_receipt": "artifacts/development/h09-20261010/human-review-b23-v1/audit.json",
+    "published": true,
+    "github_release_version": "1.98.0"
+  },
+  "h09_prompt_provider_local": {
+    "status": "actual_UI_specific_text_format_and_original_retention_human_accepted_unadopted",
+    "nodes": [
+      "MiniMaxH3FreeTokenRequestEXPT8",
+      "MiniMaxH3FreeTokenRewriteEXPT8",
+      "MiniMaxH3FreeTokenAdoptEXPT8"
+    ],
+    "documentation": "docs/H09_PROMPT_PROVIDER.md",
+    "model_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "actual_successful_text_proposals": 2,
+    "automatic_accept": false,
+    "semantic_quality_accepted": true,
+    "human_acceptance_scope": "specific_text_format_and_original_retention_NOT_scene_improvement_or_all_inputs",
+    "human_review_case": "B3",
+    "human_review_revision": 3,
+    "human_review_id": "a25f36b7eb0ac6fa988f01e5ff9c20464d1920a322893900c73f2f30dcc18d86",
+    "human_acceptance_receipt": "artifacts/development/h09-20261010/targeted-export-v1/audit.json",
+    "reviewed_template": "examples/workflows/86-h09-reviewed/B3_FreeToken_Proposal.json",
+    "resource_adaptations_reexecuted": false,
+    "native_sampler_runs": 0,
+    "published": true,
+    "github_release_version": "1.98.0"
+  },
+  "h09_release_1_98": {
+    "version": "1.98.0",
+    "reviewed_cases": 7,
+    "saved_workflows": 9,
+    "registered_nodes": 720,
+    "preserved_legacy_nodes": 697,
+    "appended_nodes": 23,
+    "workflow_index": "examples/workflows/86-h09-reviewed/README.md",
+    "human_review_scope": "specific_cases_only",
+    "frozen_cache_implemented": false,
+    "all_h09_research_complete": false,
+    "original_workflows_preserved": true,
+    "automatic_adoption": false,
+    "new_acceptance_sampling_runs": 0,
+    "registry_active_not_assumed": true
   }
 }

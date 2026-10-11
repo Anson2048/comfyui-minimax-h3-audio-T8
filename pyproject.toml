@@ -1,6 +1,6 @@
 [project]
 name = "minimax-h3-audio-t8"
-version = "1.97.0"
+version = "1.98.0"
 description = "MiniMax H3 joint AV, audio refine, long-video, reference control, motion analysis, temporal restoration, and acceleration nodes for ComfyUI"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -21,6 +21,25 @@ PublisherId = "t8star"
 DisplayName = "MiniMax H3 Audio T8"
 Icon = "https://avatars.githubusercontent.com/u/96167788"
 includes = [
+    "docs/VEDA_R2VA_EXP.md",
+    "docs/H09_PERSON_REMOVAL_EXP.md",
+    "docs/H09_FREEVIDEO_INT8_EXP.md",
+    "docs/H09_PRODUCTION_RECIPES.md",
+    "docs/H09_REFERENCE_JOIN.md",
+    "docs/H09_SOURCE_AUDIO_PLAN.md",
+    "docs/H09_PROMPT_PROVIDER.md",
+    "docs/H09_FROZEN_RESEARCH.md",
+    "tools/prepare_h09_person_assets.py",
+    "tools/prepare_h09_freevideo_int8.py",
+    "tools/prepare_h09_int8_runtime.py",
+    "tools/probe_h09_int8_kernels.py",
+    "tools/check_h09_masked_kernel.py",
+    "tools/audit_h09_int8_prepared.py",
+    "tools/import_h09_recipe.py",
+    "tools/prepare_h09_prompt_provider.py",
+    "tools/run_h09_prompt_proposal.py",
+    "docs/RELEASE_1.98.0.md",
+
     "docs/FREEVIDEO_AUDIO_CLOCK_EXP.md",
     "docs/H07_DIAGNOSTICS_EXP.md",
     "docs/H07_DELIVERY_EXP.md",
