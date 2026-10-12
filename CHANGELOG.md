@@ -2,7 +2,17 @@
 
 [首页](README.md) · [English](README_EN.md)
 
-## 当前版本：1.98.2
+## 当前版本：1.99.0
+
+### H11 已审原生增量（EXP）
+
+- Spark独立补丁／预检／Audit；Wuli原生8步及4步三文件Compose，不自动换模型。
+- Audio-only参考／条件，DRIVE与FINAL分开；EAV／Relay仍可外置。
+- FreeVideo实时只读阶段提示与耗时卡；Bridge SHA绑定侧车；镜头提案票据。
+- 七项人工审核通过，八份短名工作流保存；旧720接口／默认值及旧工作流保留。
+- [1.99.0说明](docs/RELEASE_1.99.0.md) · [工作流](examples/workflows/87-h11-reviewed/README.md)。
+
+## 1.98.2
 
 ### Topaz 解码与多显卡监控修复
 

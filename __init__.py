@@ -59,6 +59,12 @@ if __package__:
     from .nodes_source_audio_plan import NODES as _source_audio_plan_node_classes
     from .nodes_refmod_bridge import NODES as _refmod_bridge_node_classes
     from .nodes_prompt_provider import NODES as _prompt_provider_node_classes
+    from .nodes_h11_spark import NODES as _h11_spark_node_classes
+    from .nodes_h11_wuli import NODES as _h11_wuli_node_classes
+    from .nodes_h11_bridge import NODES as _h11_bridge_node_classes
+    from .nodes_h11_audio_reference import NODES as _h11_audio_reference_node_classes
+    from .nodes_h11_phases import NODES as _h11_phase_node_classes
+    from .nodes_h11_prompt_ticket import NODES as _h11_prompt_ticket_node_classes
 else:  # Allows direct test collection from a hyphenated custom-node directory.
     import importlib.util
     import sys
@@ -158,6 +164,12 @@ else:  # Allows direct test collection from a hyphenated custom-node directory.
     _source_audio_plan_node_classes = import_module(f"{_package_name}.nodes_source_audio_plan").NODES
     _refmod_bridge_node_classes = import_module(f"{_package_name}.nodes_refmod_bridge").NODES
     _prompt_provider_node_classes = import_module(f"{_package_name}.nodes_prompt_provider").NODES
+    _h11_spark_node_classes = import_module(f"{_package_name}.nodes_h11_spark").NODES
+    _h11_wuli_node_classes = import_module(f"{_package_name}.nodes_h11_wuli").NODES
+    _h11_bridge_node_classes = import_module(f"{_package_name}.nodes_h11_bridge").NODES
+    _h11_audio_reference_node_classes = import_module(f"{_package_name}.nodes_h11_audio_reference").NODES
+    _h11_phase_node_classes = import_module(f"{_package_name}.nodes_h11_phases").NODES
+    _h11_prompt_ticket_node_classes = import_module(f"{_package_name}.nodes_h11_prompt_ticket").NODES
 
 
 class _HyperFlowLongVideoExtension(_BaseExtension):
@@ -188,7 +200,9 @@ class _ModularSamplingExtension(_HyperFlowLongVideoExtension):
                 *_freevideo_audio_node_classes, *_h07_report_node_classes, *_h07_delivery_node_classes,
                 *_veda_r2va_node_classes, *_branch_guide_node_classes, *_person_removal_node_classes,
                 *_freevideo_int8_node_classes, *_source_audio_plan_node_classes, *_refmod_bridge_node_classes,
-                *_prompt_provider_node_classes]
+                *_prompt_provider_node_classes, *_h11_spark_node_classes,
+                *_h11_wuli_node_classes, *_h11_bridge_node_classes, *_h11_audio_reference_node_classes,
+                *_h11_phase_node_classes, *_h11_prompt_ticket_node_classes]
 
 
 def comfy_entrypoint():

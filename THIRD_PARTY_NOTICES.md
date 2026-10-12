@@ -520,3 +520,7 @@ SOFTWARE.
 The upstream files themselves also identify portions derived from LightX2V
 (Apache-2.0). Those source annotations and links are retained in the vendored
 files.
+
+## H11 additive adapters and resource recipes
+
+See [H11 source acknowledgements](THIRD_PARTY_NOTICES/H11-SOURCES.md) for Spark-H3 (zechengtang), Wuli-art and sandpies, FlashML FreeVideo/FreeToken, T8 Semantic Bridge Trainer and Sam Wasserman. Separately downloaded source, wheels and model weights retain their respective licenses; no weights are bundled, and acknowledgement is not general quality or speed qualification.

@@ -24,6 +24,9 @@ def main():
     # -I removes the script directory. Import the sibling isolated packages
     # from h3_t8, not from the repository root; never import ComfyUI here.
     sys.path.insert(0, str(Path(__file__).parents[1]))
+    from freevideo_phases import PhaseTimeline
+    timeline = PhaseTimeline(root)
+    timeline.begin("source_preflight")
     from freevideo_quality.profiles import plan, validate_clock, binding, LEGACY_RUNTIME, AUDIO_RUNTIME
     # Helpers are loaded as their original isolated package; no Core imported.
     from freevideo_exp.runtime import digest, verify_files
@@ -41,6 +44,7 @@ def main():
         raise ValueError("Wrong quality worker runtime")
     source_rows = [row for row in config["files"] if row["kind"] != "weight"]
     verify_files(source_rows)
+    timeline.begin("imports_conditioning")
     sys.path.insert(0, config["source_root"])
     os.environ["FREEVIDEO_VDN_ROOT"] = config["vdn_root"]
     from freevideo_engine.paths import add_vdn
@@ -84,6 +88,7 @@ def main():
     cache = Path(config["cache"])
     manifest = json.loads((cache / "manifest.json").read_text(encoding="utf8"))
     validate_catalog(manifest, 50)
+    timeline.begin("tables_policy_lora")
     weights = weight_identity(manifest)
     catalog = json.loads((Path(config["source_root"]) / "freevideo_engine/prepared_models.json").read_text(encoding="utf8"))
     tables = [(table, cache if location == "base" else Path(config["sampling_root"]))
@@ -131,6 +136,7 @@ def main():
             memory = configure(torch, policy.gpu_budget_bytes, reserve_bytes=policy.gpu_system_reserve_bytes)
             if memory.get("windows_allocator_limit_enforced"):
                 live = LiveGPUBudget(torch, memory, policy.gpu_budget_bytes, policy.gpu_system_reserve_bytes)
+            timeline.begin("engine_load")
             engine = Engine(cache, base=config["base"], checkpoint=config["checkpoint"], **options)
             from freevideo_exp.worker_effects import install
             effects = install(engine, request.get("effects", {}), canvas)
@@ -139,15 +145,18 @@ def main():
             def step(seconds):
                 nonlocal completed
                 completed += 1
+                timeline.step(completed, selected["nfe"], seconds)
                 atomic_json(root / "progress.json", dict(completed=completed, total=selected["nfe"], seconds=seconds))
 
             kwargs = {}
             if selected["role"] == "HIGH":
                 kwargs = dict(initial_latents=(tensors["initial_video"], tensors["initial_audio"]),
                               refine_steps=3, refine_schedule=selected["schedule"])
+            timeline.begin("sampling")
             video, audio, sampled = engine.sample(root / "conditioning.pt", request["seed"], **canvas, **kwargs,
                 step_callback=step, gpu_reserve_bytes=policy.gpu_system_reserve_bytes,
                 budget_refresh=live.refresh if live else None)
+            timeline.begin("latent_validation_transport")
             if completed != selected["nfe"] or len(sampled["step_seconds"]) != completed:
                 raise ValueError("Quality worker did not finish all actual NFE")
             if any(request.get("effects", {}).values()) and (effects.forwards != completed or effects.blocks != completed * 50):
@@ -172,18 +181,22 @@ def main():
                 source_inventory_sha256=config["inventory_sha256"], weight_identity=weights,
                 tables=loaded, tables_sha256=evidence_sha(loaded))
         finally:
+            timeline.begin("release")
             if effects:
                 effects.close()
             if engine:
                 engine.close()
             if live:
                 live.close()
+    timeline.begin("receipt_integrity")
     verify_files(source_rows)
     verify_files(active_loras)
     if (digest(root / "input.safetensors") != request["input_sha256"]
         or json.loads(request_path.read_text(encoding="utf8")) != request
         or digest(request["config_path"]) != request["config_sha256"]):
         raise ValueError("Quality input/config/request changed during sampling")
+    timeline.begin("complete")
+    report["phase_timeline"] = timeline.snapshot()
     atomic_json(root / "result.json", report)
 
 

@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import time
 import uuid
+from ..freevideo_phase_live import observe_phase
 
 from ..freevideo_exp.runtime import (MODEL_REVISION, VDN_REVISION, FreeVideoModel, canonical,
     conditioning_transport, digest, geometry, tensor_record, verify_files, write_json_new)
@@ -231,6 +232,7 @@ def sample(model, conditioning, width, height, frames, seed, *, quality="light",
     command = [config["python"], "-I", "-B", "-X", "utf8", str(Path(__file__).with_name("worker.py")), str(run)]
     with (run / "worker.log").open("x", encoding="utf8") as log, owned_process(command, env, run, log) as process:
         while process.poll() is None:
+            observe_phase(progress, run)
             if interrupt:
                 interrupt()
             status = run / "progress.json"
@@ -240,6 +242,7 @@ def sample(model, conditioning, width, height, frames, seed, *, quality="light",
                 except (OSError, ValueError, KeyError):
                     pass
             time.sleep(.2)
+        observe_phase(progress, run)
         if process.returncode:
             raise RuntimeError(f"Quality worker failed; evidence at {run}\n" + (run / "worker.log").read_text(encoding="utf8")[-5000:])
     config_for(model, full=True)
