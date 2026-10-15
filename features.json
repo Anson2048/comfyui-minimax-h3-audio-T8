@@ -1,4 +1,55 @@
 {
+  "h14_token_scope_local": {
+    "status": "human_reviewed_explicit_two_AV_and_saved_source_examples",
+    "published": true,
+    "human_quality_accepted": true,
+    "human_feedback_revision": 2,
+    "human_review_id": "9721e9121a0786a7aeabf698e93b2fa5cc5a363c6d95eff676b188bc5510a203",
+    "human_feedback_sha256": "9f26cae2b591e31b41ba5a071c3f66fdfd1555f7c3dcf16eddcfd60bd2f71e67",
+    "accepted_cases": {
+      "A1": "pass",
+      "A2": "pass"
+    },
+    "saved_workflows": [
+      "examples/workflows/89-h14-reviewed/H14_Ordinary.json",
+      "examples/workflows/89-h14-reviewed/H14_AudioScope.json"
+    ],
+    "documentation": "docs/H14_TOKEN_SCOPE.md",
+    "new_nodes": [
+      "MiniMaxH3TokenLoRAApplyEXPT8",
+      "MiniMaxH3TokenLoRAAuditEXPT8"
+    ],
+    "preserved_registered_prefix": 735,
+    "old_workflows_and_defaults_unchanged": true,
+    "scope_default": "generated_audio",
+    "non_target_direct_residual_excluded": true,
+    "other_modality_final_unchanged_claimed": false,
+    "global_Core_ops_replaced": false,
+    "fc2_fusion_disabled": false,
+    "runtime_owner_delegation_preserved": true,
+    "new_actual_CPU_contracts": 8,
+    "existing_complete_adapter_blocks": 50,
+    "existing_complete_adapter_targets": 100,
+    "target_band_default_changed": false,
+    "paused_removed_projects_restored": false,
+    "actual_UI_roundtrips": 2,
+    "actual_UI_complete_AV_clips": 2,
+    "actual_video_dimensions": [
+      864,
+      480
+    ],
+    "actual_delivered_frames": 120,
+    "actual_duration_seconds": 5.0,
+    "actual_audio_scoped_block_calls": 400,
+    "actual_audio_target_count": 100,
+    "actual_audio_calls_each_target": 8,
+    "actual_audio_delegated_calls": 0,
+    "actual_audio_remaining_hooks": 0,
+    "generated_video_GPU_quality_qualified": false,
+    "fc2_large_model_GPU_asset_qualified": false,
+    "fair_speedup_qualified": false,
+    "github_release_version": "1.101.0"
+  },
   "h13_audio_first_hybrid_local": {
     "status": "human_reviewed_explicit_media_and_saved_source_examples",
     "published": true,
@@ -3946,7 +3997,9 @@
     "MiniMaxH3ScenePromptRewriteEXPT8",
     "MiniMaxH3ScenePromptAdoptEXPT8",
     "MiniMaxH3AudioFirstProjectionEXPT8",
-    "MiniMaxH3AudioFirstLockAuditEXPT8"
+    "MiniMaxH3AudioFirstLockAuditEXPT8",
+    "MiniMaxH3TokenLoRAApplyEXPT8",
+    "MiniMaxH3TokenLoRAAuditEXPT8"
   ],
   "h3_memory_nodes_development_20260915": {
     "status": "v1.81.0 release implementation; independent implementation and fixed short validation complete",

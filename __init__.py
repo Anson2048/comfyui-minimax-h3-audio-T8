@@ -66,6 +66,7 @@ if __package__:
     from .nodes_h11_phases import NODES as _h11_phase_node_classes
     from .nodes_h11_prompt_ticket import NODES as _h11_prompt_ticket_node_classes
     from .nodes_audio_first import NODES as _audio_first_node_classes
+    from .nodes_token_lora import NODES as _token_lora_node_classes
 else:  # Allows direct test collection from a hyphenated custom-node directory.
     import importlib.util
     import sys
@@ -172,6 +173,7 @@ else:  # Allows direct test collection from a hyphenated custom-node directory.
     _h11_phase_node_classes = import_module(f"{_package_name}.nodes_h11_phases").NODES
     _h11_prompt_ticket_node_classes = import_module(f"{_package_name}.nodes_h11_prompt_ticket").NODES
     _audio_first_node_classes = import_module(f"{_package_name}.nodes_audio_first").NODES
+    _token_lora_node_classes = import_module(f"{_package_name}.nodes_token_lora").NODES
 
 
 class _HyperFlowLongVideoExtension(_BaseExtension):
@@ -204,7 +206,8 @@ class _ModularSamplingExtension(_HyperFlowLongVideoExtension):
                 *_freevideo_int8_node_classes, *_source_audio_plan_node_classes, *_refmod_bridge_node_classes,
                 *_prompt_provider_node_classes, *_h11_spark_node_classes,
                 *_h11_wuli_node_classes, *_h11_bridge_node_classes, *_h11_audio_reference_node_classes,
-                *_h11_phase_node_classes, *_h11_prompt_ticket_node_classes, *_audio_first_node_classes]
+                *_h11_phase_node_classes, *_h11_prompt_ticket_node_classes, *_audio_first_node_classes,
+                *_token_lora_node_classes]
 
 
 def comfy_entrypoint():

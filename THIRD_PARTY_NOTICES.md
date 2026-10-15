@@ -1,5 +1,13 @@
 # Third-party notices
 
+## H14 token-row LoRA scope
+
+Thanks to baslack / Scriptorium for the original token-row LoRA idea and prototype,
+and to ComfyUI and Wuli-art / sandpies. See [source boundaries](THIRD_PARTY_NOTICES/H14-SOURCES.md)
+and the retained [Scriptorium MIT license](THIRD_PARTY_NOTICES/H14-Scriptorium-LICENSE.txt).
+No checkpoint, private reference or review media is bundled. Shared attention can
+still affect the other modality; acknowledgement is not an isolation or speed guarantee.
+
 ## H13 AudioFirst and ordinary native Hybrid
 
 Thanks to sepiablue-ai / AudioFirst, Wuli-art, sandpies, FlashGen / Kijai,

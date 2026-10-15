@@ -2,7 +2,17 @@
 
 [首页](README.md) · [English](README_EN.md)
 
-## 当前版本：1.100.0
+## 当前版本：1.101.0
+
+### H14 已审 LoRA 生成行作用域（EXP）
+
+- 新增独立 MODEL 行作用域与采样后实际调用审计两个节点，保留原735个接口、默认值和旧工作流，总注册737。
+- plain LoRA 可显式选择生成音频／视频行的直接残差；完整目标预检、原生融合保留、异常清理和用户 owner 委托分开报告。
+- 两段真实画布5秒、864×480原生音画人工审核通过，保存普通 LoRA／generated_audio 两张短名来源图，不改参数或重采。
+- 只接受指定两片，不保证另一模态最终不变、声纹隔离、全部 LoRA 兼容或提速；大型fc2和generated_video成片未继承此次资格。
+- [1.101.0说明](docs/RELEASE_1.101.0.md) · [用法](docs/H14_TOKEN_SCOPE.md) · [已审工作流](examples/workflows/89-h14-reviewed/README.md)。
+
+## 1.100.0
 
 ### H13 已审AudioFirst与普通Hybrid（EXP）
 

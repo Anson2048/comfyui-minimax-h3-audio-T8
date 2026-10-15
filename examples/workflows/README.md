@@ -10,6 +10,7 @@ Windows 命名预算：仓库相对路径≤140、JSON文件名≤96字符；新
 
 | 目录 | 主要用途 |
 |---|---|
+| [89-h14-reviewed](89-h14-reviewed/README.md) | 两项已审普通LoRA／生成音频行作用域同条件来源图；参数与接线保持，非声纹隔离或提速认证 |
 | [88-h13-reviewed](88-h13-reviewed/README.md) | 两项已审AudioFirst同条件先音后画／Wuli普通Hybrid原生八步来源图；不覆盖旧图，参考素材自行选择 |
 | [87-h11-reviewed](87-h11-reviewed/README.md) | 七项审核通过的八份Spark／Wuli／audio-only及只读接口来源图；资源配置与边界见目录说明 |
 | [84-visual-marker](84-visual-marker/README.md) | 已接受的干净图／整框图／显式clean-VAE与marked-Qwen分流三张4+4，以及不采样的独立框选编辑器；残框限制保留，无新权重 |

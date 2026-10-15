@@ -54,13 +54,22 @@ class ReviewedH13Export(unittest.TestCase):
             values['steps'] = 7
             with self.assertRaises(ValueError):
                 exact_projection(corrupted, api)
+        h14 = read('tests/fixtures/h14_registration_append.json')
+        self.assertEqual(set(h14['prior_runtime_source_sha256']), {'__init__.py', 'pyproject.toml'})
+        self.assertEqual(h14['preserved_registered_prefix'], 735)
         for path, digest in ledger['runtime_source_sha256'].items():
+            if path in h14['prior_runtime_source_sha256']:
+                self.assertEqual(h14['prior_runtime_source_sha256'][path], digest, path)
+                digest = h14['runtime_source_sha256'][path]
             self.assertEqual(sha(path), digest, path)
+        self.assertEqual(read('features.json')['nodes'][735:], h14['new_nodes'])
         self.assertEqual(read('meta.json')['h13_audio_first_hybrid_local'],
                          read('features.json')['h13_audio_first_hybrid_local'])
         info = read('meta.json')['h13_audio_first_hybrid_local']
         self.assertTrue(info['human_quality_accepted'])
-        self.assertEqual(info['published'], info.get('github_release_version') == read('meta.json')['version'])
+        if info['published']:
+            self.assertEqual(info['github_release_version'], '1.100.0')
+            self.assertGreaterEqual(tuple(map(int, read('meta.json')['version'].split('.'))), (1, 100, 0))
         self.assertFalse(info['single_first_frame_full_video_quality_qualified'])
         self.assertEqual(info['human_feedback_revision'], 2)
         self.assertEqual(set(info['saved_workflows']), {r['relative_path'] for r in ledger['records']})

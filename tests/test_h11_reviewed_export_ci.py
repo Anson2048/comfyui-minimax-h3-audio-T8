@@ -40,10 +40,15 @@ class ReviewedH11Export(unittest.TestCase):
         h13 = read('tests/fixtures/h13_reviewed_export.json')
         prior = h13['prior_H11_runtime_sha256_for_explicit_changes']
         self.assertEqual(set(prior), {'__init__.py', 'h3_t8/wuli_native.py'})
+        h14 = read('tests/fixtures/h14_registration_append.json')
+        self.assertEqual(set(h14['prior_runtime_source_sha256']), {'__init__.py', 'pyproject.toml'})
         for path, digest in ledger['runtime_source_sha256'].items():
             if path in prior:
                 self.assertEqual(prior[path], digest, path)
                 digest = h13['runtime_source_sha256'][path]
+            if path in h14['prior_runtime_source_sha256']:
+                self.assertEqual(h14['prior_runtime_source_sha256'][path], digest, path)
+                digest = h14['runtime_source_sha256'][path]
             self.assertEqual(sha(path), digest, path)
         for name in ('meta.json','features.json'):
             info = read(name)['h11_native_extensions_local']
@@ -57,7 +62,8 @@ class ReviewedH11Export(unittest.TestCase):
         nodes = read('features.json')['nodes']
         self.assertEqual(len(nodes), len(set(nodes)))
         self.assertEqual(nodes[720:733], read('meta.json')['h11_native_extensions_local']['new_nodes'])
-        self.assertEqual(nodes[733:], read('meta.json')['h13_audio_first_hybrid_local']['new_nodes'])
+        self.assertEqual(nodes[733:735], read('meta.json')['h13_audio_first_hybrid_local']['new_nodes'])
+        self.assertEqual(nodes[735:], h14['new_nodes'])
         historical = read('tests/fixtures/h09_reviewed_sampling_1_98.json')
         self.assertIn('prior_runtime_file_sha256_before_H11_observation', historical)
         self.assertEqual(len(historical['runtime_file_sha256']),
