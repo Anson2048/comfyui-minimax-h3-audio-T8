@@ -2,7 +2,17 @@
 
 [首页](README.md) · [English](README_EN.md)
 
-## 当前版本：1.99.0
+## 当前版本：1.100.0
+
+### H13 已审AudioFirst与普通Hybrid（EXP）
+
+- 追加同条件Tiny投影／实际成片锁音审计两个独立节点，复用原Source AV strict锁音；不另造采样器。
+- 支持ComfyUI原生普通Wuli Hybrid八步模型，独立完整SHA准备工具，不需转换或额外FlashGen LoRA。
+- 修复Wuli跨调用旧stat缓存可能误认权重内容的问题；每次完整SHA核对，保留真实错误。
+- 两项真实画布5秒／0.4MP成片人工审核通过，保存两份短名来源图；旧733接口、默认、顺序和旧工作流保持。
+- [1.100.0说明](docs/RELEASE_1.100.0.md) · [已审工作流](examples/workflows/88-h13-reviewed/README.md)。
+
+## 1.99.0
 
 ### H11 已审原生增量（EXP）
 

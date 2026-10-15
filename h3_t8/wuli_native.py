@@ -18,23 +18,22 @@ ASSETS = {
     "widen": "eb643e48b5849523ffdbd365977926e6fa9b2e4c8a564f034f665560edb30805",
     "set": "36af67e8b334f89458234b29f80e1b23f7ffba44432c0450af03ee7780b60aa7",
 }
-_VERIFIED = {}
-
-
 def verified_asset(path, role):
-    """Full hash on first use; reuse only this execution's unchanged file stamp."""
+    """Hash content on every call; filesystem timestamps are not identities.
+
+    Windows ctime is generally creation time, and mtime can be restored after a
+    same-length rewrite. A process-global stat cache can therefore certify stale
+    bytes in a later task. Keep the before/after mutation check, but never reuse
+    a previous call's digest. This does not certify a later loader's file handle.
+    """
     path = Path(path).resolve(strict=True)
     before = path.stat()
-    stamp = (str(path), before.st_size, before.st_mtime_ns, before.st_ctime_ns)
-    sha = _VERIFIED.get(stamp)
-    if sha is None:
-        with path.open("rb") as file:
-            sha = hashlib.file_digest(file, "sha256").hexdigest()
-        after = path.stat()
-        if (before.st_size, before.st_mtime_ns, before.st_ctime_ns) != (
-                after.st_size, after.st_mtime_ns, after.st_ctime_ns):
-            raise ValueError("Selected Wuli asset changed while hashing")
-        _VERIFIED[stamp] = sha
+    with path.open("rb") as file:
+        sha = hashlib.file_digest(file, "sha256").hexdigest()
+    after = path.stat()
+    if (before.st_size, before.st_mtime_ns, before.st_ctime_ns) != (
+            after.st_size, after.st_mtime_ns, after.st_ctime_ns):
+        raise ValueError("Selected Wuli asset changed while hashing")
     if sha != ASSETS[role]:
         raise ValueError(f"Wrong Wuli {role} content / SHA; ordinary manual loaders remain available")
     return {"role": role, "file": str(path), "bytes": before.st_size, "sha256": sha}

@@ -1,4 +1,50 @@
 {
+  "h13_audio_first_hybrid_local": {
+    "status": "human_reviewed_explicit_media_and_saved_source_examples",
+    "published": true,
+    "human_quality_accepted": true,
+    "human_review_id": "c21678fded3be91ec0e4a2195b29439e8d93f49ef02ced4fa208fa24a02243d2",
+    "human_feedback_revision": 2,
+    "saved_workflows": [
+      "examples/workflows/88-h13-reviewed/H13_AudioFirst.json",
+      "examples/workflows/88-h13-reviewed/H13_Hybrid.json"
+    ],
+    "fair_speedup_qualified": false,
+    "documentation": "docs/H13_AUDIO_FIRST_HYBRID.md",
+    "old_registered_schemas": 733,
+    "new_nodes": [
+      "MiniMaxH3AudioFirstProjectionEXPT8",
+      "MiniMaxH3AudioFirstLockAuditEXPT8"
+    ],
+    "old_workflows_defaults_unchanged": true,
+    "CLIP_reencoding": false,
+    "new_sampler_or_source_lock_algorithm": false,
+    "wuli_hybrid_revision": "9df5eccfa095adcdbffba5ba8cbe4c0c66d15a7e",
+    "wuli_hybrid_sha256": "a852255134e20112d63a23848be122bd0076e37b9ddac09e436d9d61abbba42b",
+    "model_requires_conversion": false,
+    "actual_UI_complete_clips": 2,
+    "actual_video_dimensions": [
+      864,
+      480
+    ],
+    "actual_duration_seconds": 5,
+    "actual_native_to_delivered_frames": [
+      124,
+      120
+    ],
+    "audio_first_actual_locked_latent_max_abs_difference": 0,
+    "audio_first_actual_final_AAC_to_Tiny_FLAC_correlation": 0.9981013592451377,
+    "single_first_frame_actual_VAE_encode_only_verified": true,
+    "single_first_frame_full_video_quality_qualified": false,
+    "spark_main_runtime_upgraded": false,
+    "removed_or_paused_projects_restored": false,
+    "github_release_version": "1.100.0",
+    "human_feedback_sha256": "c53014a3c00cb179f82a997a9a0e1069212cb4e80172b6d899b43c183f9eb3c1",
+    "accepted_cases": {
+      "A1": "pass",
+      "A2": "pass"
+    }
+  },
   "h11_native_extensions_local": {
     "status": "human_reviewed_explicit_media_and_interface_examples",
     "published": true,
@@ -919,7 +965,7 @@
     ]
   },
   "name": "minimax-h3-audio-T8",
-  "version": "1.99.0",
+  "version": "1.100.0",
   "release_1_79_0": {
     "scope": "Dual-MODEL4+learned-upscale+4, KJ/Sol integration, official regular Topaz upscaling, R1 reliability, VDN upstream override coexistence",
     "qualification": "Reviewed two-segment8s prefix-lock sample accepted; old workflow defaults preserved.177 targetedCPU and62 VDN/Core checks passed; no GPU rerun for override gate removal.",

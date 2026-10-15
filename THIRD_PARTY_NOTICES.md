@@ -1,5 +1,13 @@
 # Third-party notices
 
+## H13 AudioFirst and ordinary native Hybrid
+
+Thanks to sepiablue-ai / AudioFirst, Wuli-art, sandpies, FlashGen / Kijai,
+smhfacct and MiniMax. See [H13 sources and license boundaries](THIRD_PARTY_NOTICES/H13-SOURCES.md).
+Code and separately downloaded weights retain their respective terms; neither
+models nor private references are bundled, and acknowledgement is not universal
+quality or speed certification.
+
 ## Optional FreeToken-portable prompt proposal
 
 The independent H09 prompt provider calls FreeVideo's `prompt_vlm` at

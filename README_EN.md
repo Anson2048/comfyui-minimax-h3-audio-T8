@@ -2,7 +2,7 @@
 
 MiniMax H3 video/audio nodes for ComfyUI: reference control, two-pass and long-video workflows, speech and singing, camera editing, and optional enhancement.
 
-[简体中文](README.md) | English · Current version: **1.99.0** · [Changelog](CHANGELOG.md)
+[简体中文](README.md) | English · Current version: **1.100.0** · [Changelog](CHANGELOG.md)
 
 ## Install
 
@@ -23,6 +23,7 @@ Replace placeholder models and media with your own before running.
 
 |Goal|Start here|
 |---|---|
+|Same-condition AudioFirst / ordinary Wuli Hybrid (EXP)|[Two reviewed H13 workflows](examples/workflows/88-h13-reviewed/README.md) · [Wiring and limits](docs/H13_AUDIO_FIRST_HYBRID.md)|
 |Spark / Wuli native 4/8-step, audio-only references, phase cards and Bridge sidecars (EXP)|[Eight reviewed H11 workflows](examples/workflows/87-h11-reviewed/README.md) · [Wiring and limits](docs/H11_NATIVE_EXTENSIONS.md)|
 |Veda R2VA, FreeVideo INT8, Person Removal, source PCM and proposals (EXP)|[Nine H09 source templates](examples/workflows/86-h09-reviewed/README.md) · [Wiring and limits](docs/RELEASE_1.98.0.md)|
 |Generate Foley for an existing video / reviewed H07 recipes (EXP)|[Seven workflows](examples/workflows/85-h07-reviewed/README.md) · [Foley usage](docs/H07_FOLEY_USAGE.md)|

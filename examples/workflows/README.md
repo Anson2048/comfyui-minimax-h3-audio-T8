@@ -10,6 +10,7 @@ Windows 命名预算：仓库相对路径≤140、JSON文件名≤96字符；新
 
 | 目录 | 主要用途 |
 |---|---|
+| [88-h13-reviewed](88-h13-reviewed/README.md) | 两项已审AudioFirst同条件先音后画／Wuli普通Hybrid原生八步来源图；不覆盖旧图，参考素材自行选择 |
 | [87-h11-reviewed](87-h11-reviewed/README.md) | 七项审核通过的八份Spark／Wuli／audio-only及只读接口来源图；资源配置与边界见目录说明 |
 | [84-visual-marker](84-visual-marker/README.md) | 已接受的干净图／整框图／显式clean-VAE与marked-Qwen分流三张4+4，以及不采样的独立框选编辑器；残框限制保留，无新权重 |
 | [75-radar-r6-reference](75-radar-r6-reference/README.md) | 10张原生保存来源图：参考包、独立Full/Cold采样、Full/Light解码、master模块与配方卡UI；须选自己的合法资产和实际缓存 |
