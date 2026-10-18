@@ -4,6 +4,14 @@
 
 ## 当前版本：1.101.0
 
+### 2026-10-19 源码修复与用户工作流（不另发 Registry 版本）
+
+- 模型类名／未验证 LoRA 及补丁组合改为警告，保留用户选择；真实接口、张量和文件完整性仍校验。
+- 修复 Stage 加载前 forward/hook 误判及新版 Core bypass 生命周期识别；移除 Stage 自定元数据／张量大小上限。
+- 修复新版 Core 多关键帧独立强度适配与实际启用状态报告；本机工作流采用独立已安装索引，旧 JSON 和素材不覆盖。
+- 原样收录用户改好的[空间精准控制参考生视频](examples/workflows/84-visual-marker/MiniMax+H3空间精准控制参考生视频.json)，按要求不重跑。
+- 修复已有分范围 CPU 证据；不声称新增完整模型 GPU、远端 Linux 或全部组合验收。细节见[模型组合策略](docs/PATCH_STACK_POLICY.md)及[Core 与索引维护](docs/MULTIKEYFRAME_CORE_COMPAT.md)。
+
 ### H14 已审 LoRA 生成行作用域（EXP）
 
 - 新增独立 MODEL 行作用域与采样后实际调用审计两个节点，保留原735个接口、默认值和旧工作流，总注册737。
