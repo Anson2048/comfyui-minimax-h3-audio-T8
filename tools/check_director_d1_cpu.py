@@ -7,7 +7,9 @@ import sys
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["OMP_NUM_THREADS"] = "1"
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT.parents[1]))
+core_root = ROOT.parents[1] if len(ROOT.parents) > 1 else None
+if core_root is not None and (core_root / "comfy").is_dir():
+    sys.path.insert(0, str(core_root))
 from comfy.cli_args import args  # noqa: E402 -- configure Core CPU before Torch imports
 
 args.cpu = True

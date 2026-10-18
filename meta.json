@@ -1,4 +1,11 @@
 {
+  "ordinary_prompt_examples": {
+    "node": "MiniMaxH3PlainPromptRecipeEXPT8",
+    "preserved_registered_prefix": 737,
+    "segmented_events": false,
+    "installs_attention_routing": false,
+    "original_examples_preserved": true
+  },
   "h14_token_scope_local": {
     "status": "human_reviewed_explicit_two_AV_and_saved_source_examples",
     "published": true,

@@ -3999,7 +3999,8 @@
     "MiniMaxH3AudioFirstProjectionEXPT8",
     "MiniMaxH3AudioFirstLockAuditEXPT8",
     "MiniMaxH3TokenLoRAApplyEXPT8",
-    "MiniMaxH3TokenLoRAAuditEXPT8"
+    "MiniMaxH3TokenLoRAAuditEXPT8",
+    "MiniMaxH3PlainPromptRecipeEXPT8"
   ],
   "h3_memory_nodes_development_20260915": {
     "status": "v1.81.0 release implementation; independent implementation and fixed short validation complete",

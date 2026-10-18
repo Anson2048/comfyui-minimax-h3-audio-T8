@@ -1,0 +1,11 @@
+name: Ordinary prompt examples
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  catalogue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check complete ordinary-prompt coverage and preserved controls
+        run: python3 tools/check_plain_prompt_catalogue.py
