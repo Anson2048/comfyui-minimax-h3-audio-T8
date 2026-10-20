@@ -1,6 +1,6 @@
 # S26 Audio Refine 分离式图（EXP）
 
-普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#59-audio-refine-split)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#59-audio-refine-split)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 本目录从 `18-audio-refine` 的十张已实现采样工作流各新增一对图，不替换旧图：`freeze_video` 运行原视频生成链并显式冻结**最后一遍视频**的联合 AV latent；`resume_audio` 在新 Core 中验证路径、完整 manifest 与文件 SHA 后，仅运行 Audio Refine 音频尾采。Learned／PDD 4+4 的两遍视频都属于冻结图，不能把第一遍误当最终精修输入。
 

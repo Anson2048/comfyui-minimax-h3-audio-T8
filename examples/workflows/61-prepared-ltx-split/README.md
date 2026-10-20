@@ -1,6 +1,6 @@
 # S28 Prepared LTX 生成／解码分离（实验图）
 
-普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#61-prepared-ltx-split)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#61-prepared-ltx-split)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 `Generate_Decode` 明确分开生成与解码节点；`DecodeOnly` 只载入先前生成回执并解码，不重新生成。两图均要求有效的 Prepared LTX bundle 路径和同一 serial lease 路径；冷图还需复制生成回执的精确 SHA-256。默认占位值不能直接运行。它们不是任意 H3 latent 转 LTX 的工具。
 

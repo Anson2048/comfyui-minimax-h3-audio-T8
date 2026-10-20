@@ -1,6 +1,6 @@
 # H09 / Veda R2VA：已审来源工作流
 
-普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#86-h09-reviewed)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#86-h09-reviewed)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 人物前缀续接图的逐帧MASK目录读取使用外部`VHS_LoadImagesPath`，需要安装ComfyUI-VideoHelperSuite；该依赖不随T8发行包捆绑。其余模型、素材及检查点按下表自行配置。
 

@@ -15,6 +15,13 @@ from pathlib import Path
 import uuid
 import re
 
+try:
+    from .plain_prompt_names import ORDINARY_SUFFIX, ordinary_target, render_plain_index
+    from .check_windows_paths import validate_paths
+except ImportError:
+    from plain_prompt_names import ORDINARY_SUFFIX, ordinary_target, render_plain_index
+    from check_windows_paths import validate_paths
+
 ROOT = Path(__file__).resolve().parents[1]
 ABSENT = object()
 NOTES = {"Note", "MarkdownNote"}
@@ -598,27 +605,28 @@ def scan(root):
 
 def companion_targets(root, sources, previous):
     """Keep published mappings stable when a new source sorts before old ones."""
-    by_source, counters = {}, Counter()
+    by_source = {}
     destinations = set()
     for row in previous["rows"]:
         source, target = row["source"], row["ordinary"]
-        assert source not in by_source and target not in destinations, "Duplicate prior mapping"
+        assert source not in by_source and target.casefold() not in destinations, "Duplicate prior mapping"
         relative = Path(target)
         assert not relative.is_absolute() and ".." not in relative.parts, "Unsafe prior target"
         assert relative.parent == Path(source).parent, "Companion moved outside source category"
-        match = re.fullmatch(r"Plain_(\d{3,})\.json", relative.name)
-        assert match, "Unknown companion naming scheme"
-        counters[relative.parent] = max(counters[relative.parent], int(match[1]))
+        assert relative.stem.endswith(ORDINARY_SUFFIX), "Migrate numbered examples with rename_plain_prompt_workflows.py first"
+        assert not validate_paths([relative.as_posix()]), "Windows-invalid companion target"
         by_source[source] = root / target
-        destinations.add(target)
+        destinations.add(target.casefold())
     result = {}
     for source in sources:
         relative = source.relative_to(root)
         if relative.as_posix() in by_source:
             result[source] = by_source[relative.as_posix()]
         else:
-            counters[relative.parent] += 1
-            result[source] = root / relative.parent / f"Plain_{counters[relative.parent]:03d}.json"
+            target = ordinary_target(relative)
+            assert target.as_posix().casefold() not in destinations, "Ambiguous descriptive companion name"
+            destinations.add(target.as_posix().casefold())
+            result[source] = root / target
     return result
 
 
@@ -683,23 +691,7 @@ def main():
         manifest_path.write_text(json.dumps({"schema": "t8.ordinary-prompt-examples.v1", "source_count": len(originals),
             "rows": success, "scope": "source/schema/wiring preservation; not new GPU quality acceptance"},
             ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
-        lines = ["# 普通提示词工作流", "", "每份原图保留，并提供一份独立普通提示词副本。点击右侧入口导入，",
-            "在完整提示词框一次输入画面、动作和对白；两采／各阶段文字仍可分别编辑。", "",
-            "采样器、步数、sigma、模型、LoRA、放大器、音频、保存／恢复步骤沿用原图。",
-            "原全局与局部文字合并为普通描述，时间路由被移除；画面不会因此获得强制的时间控制。", "",
-            "恢复图请先运行对应普通版 Full 并保存新的阶段文件。Prepared LTX 普通文字仍由准备包的 prompt／缓存输入。",
-            "仅完成结构、接口与保留参数校验，原版样片的人审结论不作为这些新文字副本的画质证明。", "",
-            f"共 {len(success)} 份对应关系；机器可读清单：[plain-prompt-index.json](plain-prompt-index.json)。", ""]
-        last = None
-        for row in success:
-            category = Path(row["source"]).parent.relative_to("examples/workflows").as_posix()
-            if category != last:
-                lines.extend(["", "## " + category, "", "| 原工作流 | 普通提示词副本 |", "|---|---|"])
-                last = category
-            src = row["source"].removeprefix("examples/workflows/")
-            dst = row["ordinary"].removeprefix("examples/workflows/")
-            lines.append(f"| [{Path(src).name}](<{src}>) | [{Path(dst).name}](<{dst}>) |")
-        index_path.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+        index_path.write_text(render_plain_index(success), encoding="utf-8", newline="\n")
         for relative, digest in frozen.items():
             assert hashlib.sha256((options.root / relative).read_bytes()).hexdigest() == digest, "Original JSON changed"
     print(json.dumps({"converted": len(success), "failures": len(failures), "written": options.write,

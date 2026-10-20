@@ -6,6 +6,11 @@ import hashlib
 import json
 from pathlib import Path
 
+try:
+    from .plain_prompt_names import ordinary_target
+except ImportError:
+    from plain_prompt_names import ordinary_target
+
 ROOT = Path(__file__).resolve().parents[1]
 PURE_LEGACY_HELPERS = {"MiniMaxH3MotionRelayLengthEXPT8", "MiniMaxH3FastH3V2AcceptedRelayProjectEXPT8",
                        "MiniMaxH3PromptRelayLongVideoPlanT8Advanced"}
@@ -29,6 +34,7 @@ def check(root=ROOT):
     assert len({row["ordinary"] for row in rows}) == len(rows), "Duplicate companion target"
     totals = Counter()
     for row in rows:
+        assert row["ordinary"] == ordinary_target(row["source"]).as_posix(), "Non-descriptive or misplaced ordinary workflow"
         for name, field in (("source", "source_sha256"), ("ordinary", "ordinary_sha256")):
             path = root / row[name]
             assert path.resolve().is_relative_to(root.resolve()), "Out-of-project path"

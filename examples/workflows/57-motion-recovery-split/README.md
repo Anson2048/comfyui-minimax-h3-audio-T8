@@ -1,6 +1,6 @@
 # S25 Motion Recovery 分离式双采（EXP，仍未终验）
 
-普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#57-motion-recovery-split)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#57-motion-recovery-split)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 本目录保留旧公开 Fullclip／Windowed Stock20 工作流，另新增 26 张分离图。每种路线有无效果、仅外置 Enhance a Video（EAV）、仅外置 Prompt Relay、两者组合四种配置；每种配置提供完整运行、完整运行且显式保存首采、仅冷二采三张图，另外每条路线各有一张独立“只跑并冻结首采”图。没有迁移或覆盖旧图。
 

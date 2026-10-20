@@ -17,10 +17,24 @@ def test_refresh_keeps_old_names_when_a_new_source_sorts_first(tmp_path):
     original = tmp_path / category / "B.json"
     added = tmp_path / category / "A.json"
     previous = {"rows": [{"source": (category / "B.json").as_posix(),
-                          "ordinary": (category / "Plain_001.json").as_posix()}]}
+                          "ordinary": (category / "B_普通提示词.json").as_posix()}]}
     targets = companion_targets(tmp_path, [added, original], previous)
-    assert targets[original].name == "Plain_001.json"
-    assert targets[added].name == "Plain_002.json"
+    assert targets[original].name == "B_普通提示词.json"
+    assert targets[added].name == "A_普通提示词.json"
+
+
+def test_legacy_numbered_manifest_requires_explicit_byte_preserving_migration(tmp_path):
+    category = Path("examples/workflows/test")
+    previous = {"rows": [{"source": (category / "B.json").as_posix(),
+                          "ordinary": (category / "Plain_001.json").as_posix()}]}
+    with pytest.raises(AssertionError, match="Migrate numbered examples"):
+        companion_targets(tmp_path, [tmp_path / category / "B.json"], previous)
+
+
+def test_descriptive_name_collision_is_not_hidden_with_a_number_or_hash(tmp_path):
+    category = tmp_path / "examples/workflows/test"
+    with pytest.raises(AssertionError, match="Ambiguous descriptive"):
+        companion_targets(tmp_path, [category / "H3_Dual_Relay_EXP.json", category / "Dual_Prompt_Relay_EXP.json"], {"rows": []})
 
 
 @pytest.fixture(scope="module")

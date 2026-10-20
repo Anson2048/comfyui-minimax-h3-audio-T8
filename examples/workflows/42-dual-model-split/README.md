@@ -1,6 +1,6 @@
 # S06／S07 旧 Dual MODEL 分离式二采（EXP）
 
-普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#42-dual-model-split)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#42-dual-model-split)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 这里新增六种旧 Dual MODEL 单段配方各一对图，共 12 张前端 JSON：S06 LOW4→HIGH3/4/5，以及 S07 完整 LOW20→HIGH3/4/5。每对 `Full_Stages` 显式运行并保存 LOW/HIGH；`Cold_HIGH` 读取同配方已完成 LOW 的真实 manifest 路径和 SHA，只运行 HIGH。原有一体节点、旧长视频工作流及其默认设置没有迁移。
 

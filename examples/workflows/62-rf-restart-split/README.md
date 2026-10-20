@@ -1,6 +1,6 @@
 # S29 RF Restart 分离节点（实验图）
 
-普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#62-rf-restart-split)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#62-rf-restart-split)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 三条入口 `standalone`、`detail_mixer`、`two_pass_detail_mixer`，每条各有 `minimal`、`effects`、`save_effects`、`resume_effects` 四图，共 12 张。BASE 下降、显式 Handoff、RESTART 下降是可独立查看与连接的节点；`resume_effects` 从 Stage Load 读取之前保存的 BASE，不重新运行 BASE。效果图外置 EAV／Prompt Relay 及相应时钟控制。旧 RF、Mixer 和一体工作流未改。
 

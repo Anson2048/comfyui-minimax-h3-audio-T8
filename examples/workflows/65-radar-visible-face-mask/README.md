@@ -1,6 +1,6 @@
 # 外置 Visible Face MASK（EXP）
 
-普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#65-radar-visible-face-mask)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../PLAIN_PROMPTS.md#65-radar-visible-face-mask)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 七个人脸路线各一对 Full Save / Cold Delivery，共十四张新增图。旧图、原采样、外置效果和原人工确认开关不修改。
 

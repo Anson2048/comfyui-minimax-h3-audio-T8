@@ -1,6 +1,6 @@
 # 动漫分离采样的显式隔离导出
 
-普通提示词副本：[本目录原版→普通版对照](../../PLAIN_PROMPTS.md#56-face-refine-splitisolated-delivery-exp)。完整描述一次填写，各阶段可分别编辑；原图保留。
+普通提示词副本：[本目录原版→普通版对照](../../PLAIN_PROMPTS.md#56-face-refine-splitisolated-delivery-exp)。本目录 `*_普通提示词.json` 按原功能、采样和阶段命名，与原图同目录。完整描述一次填写，各阶段可分别编辑；原图保留。
 
 本目录仅新增完整采样／保存 Stage 与零采样冷交付两张 EXP 图；不替换上级目录的 84 张图。两侧采用同一已有隔离 H.264/AAC 导出节点，外置 EAV 默认 report-only，Prompt Relay、原采样及来源音频路径保留。
 
